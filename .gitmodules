@@ -4,3 +4,6 @@
 [submodule "moonraker/moonraker"]
 	path = moonraker/moonraker
 	url = https://github.com/Arksine/moonraker
+[submodule "fluidd/fluidd"]
+	path = fluidd/fluidd
+	url = https://github.com/cadriel/fluidd
