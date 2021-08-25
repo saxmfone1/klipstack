@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  klipper:
+    build: ./klipper
+    image: klipper
+    volumes:
+      - /dev:/dev
+      - ./klipstack/var/log:/var/log
+      - ./klipstack/etc/sdcard:/etc/sdcard
+      - ./klipstack/tmp:/tmp
+      - ./klipstack/etc/config/klipper:/etc/klipper
+    device_cgroup_rules:
+      - 'c 166:* rmw'
+      - 'c 81:* rmw'
+    user: "${UID}"
+    hostname: klipper.local
+    restart: unless-stopped
+  moonraker:
+    build: ./moonraker
+    image: moonraker
+    volumes:
+      - ./klipstack/var/log:/var/log
+      - ./klipstack/etc/sdcard:/etc/sdcard
+      - ./klipstack/tmp:/tmp
+      - ./klipstack/etc/config/moonraker:/etc/moonraker
+    user: "${UID}"
+    hostname: moonraker.local
+    ports:
+      - 7125:7125
+    restart: unless-stopped
+  fluidd:
+    image: fluidd
+    hostname: fluidd.local
+    ports:
+      - 8081:80
+    restart: unless-stopped
+networks:
+  default:
+    name: klipper
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/26

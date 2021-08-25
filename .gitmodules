@@ -1,0 +1,6 @@
+[submodule "klipper/klipper"]
+	path = klipper/klipper
+	url = https://github.com/KevinOConnor/klipper.git
+[submodule "moonraker/moonraker"]
+	path = moonraker/moonraker
+	url = https://github.com/Arksine/moonraker
