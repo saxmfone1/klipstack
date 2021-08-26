@@ -6,7 +6,7 @@ services:
     volumes:
       - /dev:/dev
       - ./klipstack/log:/var/log
-      - ./klipstack/sdcard:/etc/sdcard
+      - ./klipstack/sdcard:/home/klippy/sdcard
       - ./klipstack/tmp:/tmp
       - ./klipstack/conf/klipper:/home/klippy/.config
     device_cgroup_rules:
@@ -20,9 +20,9 @@ services:
     image: moonraker
     volumes:
       - ./klipstack/log:/var/log
-      - ./klipstack/sdcard:/etc/sdcard
+      - ./klipstack/sdcard:/home/moonraker/sdcard
       - ./klipstack/tmp:/tmp
-      - ./klipstack/conf/moonraker:/etc/moonraker
+      - ./klipstack/conf/moonraker:/home/moonraker/moonraker
     user: "${UID}"
     hostname: moonraker.local
     ports:

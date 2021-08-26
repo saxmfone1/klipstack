@@ -1,0 +1,24 @@
+# Sample Moonraker Configuration File
+
+[server]
+host: 0.0.0.0
+port: 7125
+enable_debug_logging: False
+config_path: ~/.config
+temperature_store_size: 600
+gcode_store_size: 1000
+log_path: /var/log
+
+[authorization]
+enabled: True
+trusted_clients:
+    192.168.1.0/24
+
+cors_domains:
+    *.local
+    *.lan
+    *://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
