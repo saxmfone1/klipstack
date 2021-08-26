@@ -1,6 +1,7 @@
 FROM node:14.7 as node
 COPY fluidd /usr/src/app
 COPY files/vue.config.js /usr/src/app/
+COPY files/package.json /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install
 RUN npm run build
