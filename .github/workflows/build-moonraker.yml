@@ -35,7 +35,7 @@ jobs:
           push: true
           tags: |
             saxmfone1/klipper:latest
-          cache-from: type=registry,ref=user/klipper:latest
+          cache-from: type=registry,ref=saxmfone1/klipper:latest
           cache-to: type=inline
 
   moonraker:
@@ -68,7 +68,7 @@ jobs:
           push: true
           tags: |
             saxmfone1/moonraker:latest
-          cache-from: type=registry,ref=user/moonraker:latest
+          cache-from: type=registry,ref=saxmfone1/moonraker:latest
           cache-to: type=inline
   fluidd:
     runs-on: ubuntu-latest
@@ -100,5 +100,5 @@ jobs:
           push: true
           tags: |
             saxmfone1/fluidd:latest
-          cache-from: type=registry,ref=user/fluidd:latest
+          cache-from: type=registry,ref=saxmfone1/fluidd:latest
           cache-to: type=inline
