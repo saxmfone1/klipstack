@@ -1,3 +1,4 @@
 klipstack/conf/*.*
 !klipstack/conf/moonraker.conf.example
 !klipstack/conf/printer.cfg.example
+.docker
