@@ -1,0 +1,37 @@
+name: build docker images
+
+on:  
+  push:    
+    branches: [ main ]
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_KEY }}
+      -
+        name: Build and push moonraker
+        uses: docker/build-push-action@v2
+        with:
+          context: ./moonraker
+          platforms: linux/arm/v7
+          push: true
+          tags: |
+            saxmfone1/moonraker:latest

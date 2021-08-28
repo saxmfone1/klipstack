@@ -35,21 +35,3 @@ jobs:
           push: true
           tags: |
             saxmfone1/klipper:latest
-      -
-        name: Build and push moonraker
-        uses: docker/build-push-action@v2
-        with:
-          context: ./moonraker
-          platforms: linux/arm/v7
-          push: true
-          tags: |
-            saxmfone1/moonraker:latest
-      -
-        name: Build and push fluidd
-        uses: docker/build-push-action@v2
-        with:
-          context: ./fluidd
-          platforms: linux/arm/v7
-          push: true
-          tags: |
-            saxmfone1/fluidd:latest
