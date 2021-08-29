@@ -24,7 +24,7 @@ Copy in the relevant Klipper and Moonraker configs into `klipstack/conf`. Altern
 
 Change into the directory and run:
 
-`docker-compose up -d`
+`UID=$(id -u) docker-compose up -d`
 
 This will pull down pre-built images from this repo and bring them up. 
 
