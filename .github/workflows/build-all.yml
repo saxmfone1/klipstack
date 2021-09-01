@@ -113,7 +113,7 @@ jobs:
         with:
           node-version: 12
       - name: Install plugins
-        run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog -D
+        run: npm install -g semantic-release @semantic-release/exec @semantic-release/changelog -D
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
