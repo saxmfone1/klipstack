@@ -2,7 +2,7 @@ version: "3.9"
 services:
   klipper:
     build: ./klipper
-    image: klipper
+    image: saxmfone1/klipper
     volumes:
       - /dev:/dev
       - ./klipstack/log:/var/log
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
   moonraker:
     build: ./moonraker
-    image: moonraker
+    image: saxmfone1/moonraker
     volumes:
       - ./klipstack/log:/var/log
       - ./klipstack/sdcard:/home/moonraker/sdcard
@@ -29,7 +29,7 @@ services:
       - 7125:7125
     restart: unless-stopped
   fluidd:
-    image: fluidd
+    image: saxmfone1/fluidd
     hostname: fluidd.local
     ports:
       - 8081:80
