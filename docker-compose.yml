@@ -22,7 +22,7 @@ services:
       - ./klipstack/log:/var/log
       - ./klipstack/sdcard:/home/moonraker/sdcard
       - ./klipstack/tmp:/tmp
-      - ./klipstack/conf:/home/moonraker/moonraker
+      - ./klipstack/conf:/home/moonraker/.config
     user: "${UID}"
     hostname: moonraker.local
     ports:
