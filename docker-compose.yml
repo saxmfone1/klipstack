@@ -8,7 +8,7 @@ services:
       - ./klipstack/log:/var/log
       - ./klipstack/sdcard:/home/klippy/sdcard
       - ./klipstack/tmp:/tmp
-      - ./klipstack/conf/klipper:/home/klippy/.config
+      - ./klipstack/conf:/home/klippy/.config
     device_cgroup_rules:
       - 'c 166:* rmw'
       - 'c 81:* rmw'
@@ -22,7 +22,7 @@ services:
       - ./klipstack/log:/var/log
       - ./klipstack/sdcard:/home/moonraker/sdcard
       - ./klipstack/tmp:/tmp
-      - ./klipstack/conf/moonraker:/home/moonraker/moonraker
+      - ./klipstack/conf:/home/moonraker/moonraker
     user: "${UID}"
     hostname: moonraker.local
     ports:
