@@ -5,6 +5,8 @@
 - Make
 - Docker
 - Docker Compose
+
+## Build Requirements
 - Docker Buildkit + quemu-user-static + binfmt_misc (if building on an arch other than linux/arm/v7)
 
 ### Quickstart
