@@ -6,7 +6,7 @@ services:
     volumes:
       - /dev:/dev
       - ./klipstack/log:/var/log
-      - ./klipstack/sdcard:/home/klippy/sdcard
+      - ./klipstack/sdcard:/sdcard
       - ./klipstack/tmp:/tmp
       - ./klipstack/conf:/home/klippy/.config
     device_cgroup_rules:
@@ -20,7 +20,7 @@ services:
     image: saxmfone1/moonraker
     volumes:
       - ./klipstack/log:/var/log
-      - ./klipstack/sdcard:/home/moonraker/sdcard
+      - ./klipstack/sdcard:/sdcard
       - ./klipstack/tmp:/tmp
       - ./klipstack/conf:/home/moonraker/.config
     user: "${UID}"
