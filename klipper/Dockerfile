@@ -16,7 +16,9 @@ RUN apt-get update && \
     libnewlib-arm-none-eabi \
     gcc-arm-none-eabi \
     binutils-arm-none-eabi \
-    libusb-1.0
+    libusb-1.0 \
+    python-numpy \
+    python-matplotlib
 
 
 RUN groupadd -g 1000 3dprinters
@@ -30,6 +32,7 @@ WORKDIR /home/klippy
 
 RUN virtualenv -p python2 /home/klippy/klippy-env
 RUN /home/klippy/klippy-env/bin/pip install -r /home/klippy/klipper/scripts/klippy-requirements.txt
+RUN /home/klippy/klippy-env/bin/pip install -v numpy
 
 
 CMD ["/home/klippy/klippy-env/bin/python", "/home/klippy/klipper/klippy/klippy.py", "/home/klippy/.config/printer.cfg", "-l", "/var/log/klippy.log", "-a", "/tmp/klippy_uds"]
