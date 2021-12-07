@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y \
     libsodium-dev \
     zlib1g-dev \
     build-essential \
-    libjpeg-dev
+    libjpeg-dev \
+    libcurl4-openssl-dev \
+    libssl-dev
 
 
 RUN useradd -ms /bin/bash -u 1000 moonraker

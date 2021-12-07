@@ -1,5 +1,5 @@
 
-BUILD := $(shell git rev-parse --short HEAD)
+BUILD ?= $(shell git rev-parse --short HEAD)
 HOME := $(shell pwd)
 
 .PHONY: klipper
