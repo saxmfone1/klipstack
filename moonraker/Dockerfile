@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libjpeg-dev \
     libcurl4-openssl-dev \
-    libssl-dev
+    libssl-dev \
+    iproute2
 
 
 RUN useradd -ms /bin/bash -u 1000 moonraker
