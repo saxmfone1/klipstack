@@ -28,7 +28,7 @@ Copy in the relevant Klipper and Moonraker configs into `klipstack/conf`. Altern
 
 Change into the directory and run:
 
-`make start`
+`make pull start`
 
 This will pull down pre-built images from this repo and bring them up. 
 
