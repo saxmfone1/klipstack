@@ -1,6 +1,19 @@
 
 BUILD ?= $(shell git rev-parse --short HEAD)
 HOME := $(shell pwd)
+USER_ID ?= $(shell id -u)
+USERNAME ?= $(shell whoami)
+
+.PHONE: dependencies
+dependencies:
+	sudo apt-get update
+	sudo apt-get install -y \
+		docker.io \
+		build-essential \
+		python3-pip
+	sudo usermod -aG docker $(USERNAME)
+	sudo pip3 install -y docker-compose
+	echo "PATH=/usr/local/bin/:${PATH}" >> ~/.bashrc
 
 .PHONY: klipper
 klipper:
@@ -29,3 +42,7 @@ flash:
 .PHONY: list-usb
 list-usb:
 	docker run --rm -it --user 0 --platform linux/arm/v7 --entrypoint bash -v /dev:/dev -v $(HOME)/klipstack/firmware/out:/home/klippy/klipper/out saxmfone1/klipper:$(BUILD) -c "ls -al /dev/serial/by-id/*"
+
+.PHONY: start
+start:
+	USER_ID=$(USER_ID) BUILD=$(BUILD) docker-compose up -d
