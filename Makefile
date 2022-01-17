@@ -46,7 +46,10 @@ flash:
 list-usb:
 	docker run --rm -it --user 0 --platform linux/arm/v7 --entrypoint bash -v /dev:/dev -v $(HOME)/klipstack/firmware/out:/home/klippy/klipper/out saxmfone1/klipper:$(BUILD) -c "ls -al /dev/serial/by-id/*"
 
+.PHONY: pull
+pull:
+	docker-compose pull
+
 .PHONY: start
 start:
-	docker-compose pull
 	USER_ID=$(USER_ID) TAG=$(BUILD) docker-compose up -d
