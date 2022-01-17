@@ -53,3 +53,14 @@ pull:
 .PHONY: start
 start:
 	USER_ID=$(USER_ID) TAG=$(BUILD) docker-compose up -d
+
+.PHONY: service
+service:
+        sudo echo "[Unit]" > /etc/systemd/system/klipstack.service
+        sudo echo "Description=Klipstack" >> /etc/systemd/system/klipstack.service
+        sudo echo "After=default.target" >> /etc/systemd/system/klipstack.service
+        sudo echo "[Service]" >> /etc/systemd/system/klipstack.service
+        sudo echo "ExecStart=$(HOME)/boot.sh" >> /etc/systemd/system/klipstack.service
+        sudo echo "[Install]" >> /etc/systemd/system/klipstack.service
+        sudo echo "WantedBy=default.target" >> /etc/systemd/system/klipstack.service
+        sudo systemctl enable klipstack.service
