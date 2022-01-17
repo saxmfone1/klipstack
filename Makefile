@@ -7,13 +7,16 @@ USERNAME ?= $(shell whoami)
 .PHONE: dependencies
 dependencies:
 	sudo apt-get update
-	sudo apt-get install -y \
+	sudo apt-get install \
 		docker.io \
 		build-essential \
 		python3-pip
 	sudo usermod -aG docker $(USERNAME)
-	sudo pip3 install -y docker-compose
-	echo "PATH=/usr/local/bin/:${PATH}" >> ~/.bashrc
+	sudo pip3 install docker-compose
+	if [ "$(shell sudo which docker-compose)" = "$(shell which docker-compose)" ]; then \
+	    echo "PATH=/usr/local/bin:${PATH}" >> ~/.bashrc; \
+	    . ~/.bashrc; \
+	fi
 
 .PHONY: klipper
 klipper:
@@ -45,4 +48,5 @@ list-usb:
 
 .PHONY: start
 start:
-	USER_ID=$(USER_ID) BUILD=$(BUILD) docker-compose up -d
+	docker-compose pull
+	USER_ID=$(USER_ID) TAG=$(BUILD) docker-compose up -d
