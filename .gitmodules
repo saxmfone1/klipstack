@@ -6,4 +6,4 @@
 	url = https://github.com/Arksine/moonraker
 [submodule "fluidd/fluidd"]
 	path = fluidd/fluidd
-	url = https://github.com/cadriel/fluidd
+	url = https://github.com/fluidd-core/fluidd.git
