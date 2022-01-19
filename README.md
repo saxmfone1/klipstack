@@ -3,14 +3,16 @@
 
 ### Requirements
 - Make
-- Docker
-- Docker Compose
+- Docker (installed via Make)
+- Docker Compose (installed via Make)
 
 ## Build Requirements
 - Docker Buildkit + quemu-user-static + binfmt_misc (if building on an arch other than linux/arm/v7)
 
 ### Quickstart
 Clone the git repository in your directory of choice on the Pi.
+
+Run `make dependencies` to install the dependencies for Debian and Ubuntu based images. For other Linux distros, make sure to install Docker and a recent version of docker-compose.
 
 Run `make generate-klipper-conf` to generate the proper config file to build the firmware. Choose the correct settings for your printer board. You can usually find hints for what to choose by looking at the example config for the Klipper runtime or by searching the internet. 
 
@@ -26,7 +28,7 @@ Copy in the relevant Klipper and Moonraker configs into `klipstack/conf`. Altern
 
 Change into the directory and run:
 
-`UID=$(id -u) docker-compose up -d`
+`make pull start`
 
 This will pull down pre-built images from this repo and bring them up. 
 
@@ -38,5 +40,3 @@ In order to build from source, you will also need to clone the submodules. After
 This will pull down the Klipper, Moonraker, and Fluidd projects.
 
 You can then issue a `make klipper` or `make moonraker` or `make fluidd` to build the containers for each. It will tag them with the git hash.
-
-
